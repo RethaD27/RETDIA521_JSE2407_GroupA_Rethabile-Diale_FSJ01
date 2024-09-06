@@ -16,7 +16,14 @@ export default function ImageGallery({ images }) {
 
   return (
     <div className={styles.gallery}>
-      <Image src={images[currentImage]} alt="Product" width={400} height={400} />
+      <Image 
+        src={images[currentImage]} 
+        alt="Product" 
+        width={800} 
+        height={600} 
+        objectFit="cover"
+        className={styles.mainImage}
+      />
       {images.length > 1 && (
         <div className={styles.controls}>
           <button onClick={prevImage}>Previous</button>

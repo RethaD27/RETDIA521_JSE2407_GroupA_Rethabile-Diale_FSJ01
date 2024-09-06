@@ -21,15 +21,19 @@ export default async function ProductPage({ params }) {
 
   return (
     <div className={styles.container}>
-      <Link href="/">Back to Products</Link>
-      <h1>{product.title}</h1>
+      <Link href="/" className={styles.backLink}>Back to Products</Link>
+      <h1 className={styles.productTitle}>{product.title}</h1>
       <ImageGallery images={product.images} />
-      <p className={styles.price}>Price: ${product.price}</p>
-      <p>Category: {product.category}</p>
-      <p>Description: {product.description}</p>
-      <p>Tags: {product.tags.join(', ')}</p>
-      <p>Rating: {product.rating}</p>
-      <p>Stock: {product.stock} {product.stock > 0 ? '(In Stock)' : '(Out of Stock)'}</p>
+      <p className={styles.price}>${product.price}</p>
+      <p className={styles.description}>{product.description}</p>
+      <p className={styles.info}>Category: {product.category}</p>
+      <div className={styles.tags}>
+        {product.tags.map((tag, index) => (
+          <span key={index} className={styles.tag}>{tag}</span>
+        ))}
+      </div>
+      <p className={styles.info}>Rating: {product.rating}</p>
+      <p className={styles.info}>Stock: {product.stock} {product.stock > 0 ? '(In Stock)' : '(Out of Stock)'}</p>
       <Reviews reviews={product.reviews} />
     </div>
   );
