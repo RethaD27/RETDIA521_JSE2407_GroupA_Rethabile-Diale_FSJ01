@@ -1,4 +1,8 @@
 import { fetchProductById } from '../../api';
+import Link from 'next/link';
+import ImageGallery from '../../components/ImageGallery';
+import Reviews from '../../components/Reviews';
+import styles from './page.module.css';
 
 export default async function ProductPage({ params }) {
   const { id } = params;
@@ -12,26 +16,21 @@ export default async function ProductPage({ params }) {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className={styles.error}>Error: {error}</div>;
   }
 
   return (
-    <div>
+    <div className={styles.container}>
+      <Link href="/">Back to Products</Link>
       <h1>{product.title}</h1>
-      <p>Price: ${product.price}</p>
-      <p>Description: {product.description}</p>
+      <ImageGallery images={product.images} />
+      <p className={styles.price}>Price: ${product.price}</p>
       <p>Category: {product.category}</p>
+      <p>Description: {product.description}</p>
+      <p>Tags: {product.tags.join(', ')}</p>
       <p>Rating: {product.rating}</p>
-      <h2>Reviews</h2>
-      <ul>
-        {product.reviews.map((review, index) => (
-          <li key={index}>
-            <p>Rating: {review.rating}</p>
-            <p>Comment: {review.comment}</p>
-            <p>By: {review.reviewerName}</p>
-          </li>
-        ))}
-      </ul>
+      <p>Stock: {product.stock} {product.stock > 0 ? '(In Stock)' : '(Out of Stock)'}</p>
+      <Reviews reviews={product.reviews} />
     </div>
   );
 }
