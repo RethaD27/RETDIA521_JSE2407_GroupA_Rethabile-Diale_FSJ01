@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { fetchProducts } from './api';
+import ProductGrid from './components/ProductGrid';
+import Pagination from './components/Pagination';
+import styles from './page.module.css';
 
 export default async function Home({ searchParams }) {
   const page = Number(searchParams.page) || 1;
@@ -13,29 +16,14 @@ export default async function Home({ searchParams }) {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className={styles.error}>Error: {error}</div>;
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>E-commerce Store</h1>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            <Link href={`/product/${product.id}`}>
-              {product.title} - ${product.price}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <div>
-        {page > 1 && (
-          <Link href={`/?page=${page - 1}`}>Previous Page</Link>
-        )}
-        {products.length === 20 && (
-          <Link href={`/?page=${page + 1}`}>Next Page</Link>
-        )}
-      </div>
+      <ProductGrid products={products} />
+      <Pagination currentPage={page} hasMore={products.length === 20} />
     </div>
   );
 }
