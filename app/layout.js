@@ -1,3 +1,5 @@
+import './globals.css';
+
 export const metadata = {
   title: 'Next.js E-commerce',
   description: 'A simple e-commerce site built with Next.js',
