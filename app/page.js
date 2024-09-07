@@ -21,7 +21,10 @@ export default async function Home({ searchParams }) {
 
   return (
     <div className={styles.container}>
-      <h1>QuickCart Emporium</h1>
+      <header className={styles.header}>
+        <h1 className={`${styles.cursiveTitle} cursive-title`}>QuickCart Emporium</h1>
+        <p className={styles.subheader}>Discover Amazing Products at Great Prices</p>
+      </header>
       <ProductGrid products={products} />
       <Pagination currentPage={page} hasMore={products.length === 20} />
     </div>

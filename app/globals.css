@@ -1,45 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Dancing+Script:wght@700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary-color: #3498db;
-  --secondary-color: #2ecc71;
-  --background-color: #f4f4f4;
-  --text-color: #333;
-  --card-background: #ffffff;
-  --shadow-color: rgba(0, 0, 0, 0.1);
-}
-
 body {
-  font-family: 'Roboto', Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  @apply bg-background text-text font-sans leading-7;
 }
 
 a {
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: color 0.3s ease;
+  @apply text-primary no-underline transition-colors duration-300;
 }
 
 a:hover {
-  color: #2980b9;
+  @apply text-blue-700;
 }
 
 button {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  @apply bg-primary text-white border-none py-2 px-4 cursor-pointer rounded-md font-bold transition-colors duration-300;
 }
 
 button:hover {
-  background-color: #2980b9;
+  @apply bg-blue-700;
+}
+
+.cursive-title {
+  @apply font-cursive font-bold text-accent shadow-custom-light;
 }
