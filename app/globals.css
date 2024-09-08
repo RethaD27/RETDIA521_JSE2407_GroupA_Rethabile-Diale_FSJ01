@@ -4,26 +4,53 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #84baf0;
+  --text-color: #2c3e50;
+  --card-background: grey;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --accent-color: #13f907;
+}
+
 body {
-  @apply bg-background text-text font-sans leading-7;
+  font-family: 'Roboto', Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  /*background-color: var(--background-color);*/
+  color: var(--text-color);
 }
 
 a {
-  @apply text-primary no-underline transition-colors duration-300;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 a:hover {
-  @apply text-blue-700;
+  color: #2980b9;
 }
 
 button {
-  @apply bg-primary text-white border-none py-2 px-4 cursor-pointer rounded-md font-bold transition-colors duration-300;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
 }
 
 button:hover {
-  @apply bg-blue-700;
+  background-color: #2980b9;
 }
 
 .cursive-title {
-  @apply font-cursive font-bold text-accent shadow-custom-light;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
