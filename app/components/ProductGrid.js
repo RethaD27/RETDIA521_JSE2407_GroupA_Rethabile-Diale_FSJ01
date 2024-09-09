@@ -1,23 +1,23 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from './ProductGrid.module.css';
 
 export default function ProductGrid({ products }) {
   return (
-    <div className={styles.grid}>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {products.map((product) => (
-        <Link href={`/product/${product.id}`} key={product.id} className={styles.card}>
+        <Link href={`/product/${product.id}`} key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105">
           <Image 
             src={product.thumbnail} 
             alt={product.title} 
             width={250}
             height={250}
             objectFit="cover"
+            className="w-full h-48 object-cover"
           />
-          <div className={styles.cardContent}>
-            <h2>{product.title}</h2>
-            <p className={styles.price}>${product.price}</p>
-            <p>{product.category}</p>
+          <div className="p-4">
+            <h2 className="text-lg font-semibold mb-2 truncate">{product.title}</h2>
+            <p className="text-green-600 font-bold">${product.price}</p>
+            <p className="text-sm text-gray-600 mt-1">{product.category}</p>
           </div>
         </Link>
       ))}

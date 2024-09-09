@@ -1,15 +1,18 @@
 import Link from 'next/link';
-import styles from './Pagination.module.css';
 
 export default function Pagination({ currentPage, hasMore }) {
   return (
-    <div className={styles.pagination}>
+    <div className="flex justify-center items-center space-x-4 my-12">
       {currentPage > 1 && (
-        <Link href={`/?page=${currentPage - 1}`}>Previous Page</Link>
+        <Link href={`/?page=${currentPage - 1}`} className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+          ← Previous
+        </Link>
       )}
-      <span>Page {currentPage}</span>
+      <span className="text-gray-700 font-semibold">Page {currentPage}</span>
       {hasMore && (
-        <Link href={`/?page=${currentPage + 1}`}>Next Page</Link>
+        <Link href={`/?page=${currentPage + 1}`} className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+          Next →
+        </Link>
       )}
     </div>
   );

@@ -1,21 +1,21 @@
 import './globals.css';
-import Head from 'next/head';
 
 export const metadata = {
-  title: 'Next.js E-commerce',
-  description: 'A simple e-commerce site built with Next.js',
+  title: 'QuickCart Emporium',
+  description: 'Discover Amazing Products at Great Prices',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-      <body>{children}</body>
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+      </head>
+      <body className="font-sans bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
