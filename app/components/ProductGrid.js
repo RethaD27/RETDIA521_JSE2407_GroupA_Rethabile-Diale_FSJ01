@@ -12,7 +12,6 @@ export default function ProductGrid({ products }) {
             width={250}
             height={250}
             objectFit="cover"
-            className="w-full h-48 object-cover"
           />
           <div className="p-4">
             <h2 className="text-lg font-semibold mb-2 truncate">{product.title}</h2>
