@@ -13,6 +13,10 @@ export default function ImageGallery({ images }) {
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  const handleImageClick = (index) => {
+    setCurrentImage(index);
+  };
+
   return (
     <div className="relative">
       <Image 
@@ -24,14 +28,35 @@ export default function ImageGallery({ images }) {
         className="w-full h-auto rounded-lg shadow-md"
       />
       {images.length > 1 && (
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-4">
-          <button onClick={prevImage} className="bg-white bg-opacity-50 hover:bg-opacity-75 text-gray-800 font-bold py-2 px-4 rounded-l">
-            Previous
+        <>
+          <button 
+            onClick={prevImage} 
+            className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-700 text-white p-2 rounded-full hover:bg-gray-800 transition-colors duration-300"
+          >
+            &lt;
           </button>
-          <button onClick={nextImage} className="bg-white bg-opacity-50 hover:bg-opacity-75 text-gray-800 font-bold py-2 px-4 rounded-r">
-            Next
+          <button 
+            onClick={nextImage} 
+            className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white p-2 rounded-full hover:bg-gray-800 transition-colors duration-300"
+          >
+            &gt;
           </button>
-        </div>
+
+          <div className="flex justify-center mt-4 space-x-2">
+            {images.map((image, index) => (
+              <Image
+                key={index}
+                src={image}
+                alt={`Thumbnail ${index + 1}`}
+                width={100} 
+                height={100}
+                objectFit="cover"
+                className={`h-16 w-16 object-cover cursor-pointer ${currentImage === index ? 'border-2 border-amber-600' : 'border'}`}
+                onClick={() => handleImageClick(index)}
+              />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );
