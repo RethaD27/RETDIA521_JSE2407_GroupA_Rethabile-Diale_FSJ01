@@ -52,7 +52,6 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="p-4">
           <h2 className="text-xl font-semibold text-indigo-800 mb-2 truncate">{product.title}</h2>
-          <p className="text-gray-600 mb-2">{product.description.slice(0, 100)}...</p>
           <div className="flex justify-between items-center">
             <span className="text-2xl font-bold text-purple-600">${product.price.toFixed(2)}</span>
             <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
