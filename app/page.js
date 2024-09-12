@@ -14,15 +14,12 @@ export default async function Home({ searchParams }) {
   }
 
   if (error) {
-    return <div className="text-red-500 text-center p-4">Error: {error}</div>;
+    return <div className="text-red-600 text-center p-4 bg-red-100 rounded-lg">Error: {error}</div>;
   }
 
   return (
-    <div className="py-12">
-      <header className="text-center mb-12">
-        <h1 className="font-['Dancing_Script'] text-6xl text-indigo-600 mb-4">QuickCart Emporium</h1>
-        <p className="text-xl text-gray-600">Discover Amazing Products at Great Prices</p>
-      </header>
+    <div>
+      <h1 className="text-4xl font-bold text-indigo-800 mb-8 text-center">Discover Amazing Products</h1>
       <ProductGrid products={products} />
       <Pagination currentPage={page} hasMore={products.length === 20} />
     </div>

@@ -31,15 +31,17 @@ export default function ImageGallery({ images }) {
         <>
           <button 
             onClick={prevImage} 
-            className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-700 text-white p-2 rounded-full hover:bg-gray-800 transition-colors duration-300"
+            className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-indigo-600 text-white p-3 rounded-full hover:bg-indigo-700 transition-colors duration-300"
+            aria-label="Previous image"
           >
-            &lt;
+            &#8592;
           </button>
           <button 
             onClick={nextImage} 
-            className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white p-2 rounded-full hover:bg-gray-800 transition-colors duration-300"
+            className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-indigo-600 text-white p-3 rounded-full hover:bg-indigo-700 transition-colors duration-300"
+            aria-label="Next image"
           >
-            &gt;
+            &#8594;
           </button>
 
           <div className="flex justify-center mt-4 space-x-2">
@@ -51,7 +53,7 @@ export default function ImageGallery({ images }) {
                 width={100} 
                 height={100}
                 objectFit="cover"
-                className={`h-16 w-16 object-cover cursor-pointer ${currentImage === index ? 'border-2 border-amber-600' : 'border'}`}
+                className={`h-16 w-16 object-cover cursor-pointer rounded-md transition-transform duration-300 hover:scale-110 ${currentImage === index ? 'border-2 border-indigo-600' : 'border border-gray-300'}`}
                 onClick={() => handleImageClick(index)}
               />
             ))}

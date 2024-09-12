@@ -20,7 +20,6 @@ export default async function ProductPage({ params }) {
 
   return (
     <div className="py-12">
-      {/* Updated back link without the <a> tag */}
       <Link href="/" className="flex items-center space-x-2 text-blue-600 hover:text-blue-800 mb-8 transition-colors duration-300">
         <svg
           xmlns="http://www.w3.org/2000/svg"
