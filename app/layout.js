@@ -3,7 +3,7 @@ import Header from './components/Header';
 
 export const metadata = {
   title: 'QuickCart Emporium',
-  description: 'Discover Amazing Products at Great Prices',
+  description: 'Discover Amazing Products',
 };
 
 export default function RootLayout({ children }) {
