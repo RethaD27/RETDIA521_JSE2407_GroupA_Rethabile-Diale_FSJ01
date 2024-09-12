@@ -1,26 +1,60 @@
+'use client'; 
+
+import React from 'react';
 import { fetchProductById } from '../../api';
-import Link from 'next/link';
 import ImageGallery from '../../components/ImageGallery';
 import Reviews from '../../components/Reviews';
 
-export default async function ProductPage({ params }) {
+/**
+ * ProductPage component displays detailed information about a single product.
+ * It fetches product data based on the provided product ID, handles errors,
+ * and provides a button to navigate back to the previous page.
+ * 
+ * @param {Object} props - The props for the component.
+ * @param {Object} props.params - Parameters for the component.
+ * @param {string} props.params.id - The ID of the product to fetch and display.
+ * @returns {JSX.Element} The ProductPage component.
+ */
+export default function ProductPage({ params }) {
   const { id } = params;
-  let product;
-  let error;
+  const [product, setProduct] = React.useState(null);
+  const [error, setError] = React.useState(null);
 
-  try {
-    product = await fetchProductById(id);
-  } catch (e) {
-    error = e.message;
+  React.useEffect(() => {
+    async function fetchProduct() {
+      try {
+        const fetchedProduct = await fetchProductById(id);
+        setProduct(fetchedProduct);
+      } catch (e) {
+        setError(e.message);
+      }
+    }
+
+    fetchProduct();
+  }, [id]);
+
+  /**
+   * Handles navigation to the previous page.
+   */
+  function goBack() {
+    window.history.back();
   }
 
   if (error) {
     return <div className="text-red-500 text-center p-4">Error: {error}</div>;
   }
 
+  if (!product) {
+    return <div className="text-gray-500 text-center p-4">Loading...</div>;
+  }
+
   return (
     <div className="py-12">
-      <Link href="/" className="flex items-center space-x-2 text-blue-600 hover:text-blue-800 mb-8 transition-colors duration-300">
+      {/* Button to go back to the previous page */}
+      <button
+        onClick={goBack}
+        className="flex items-center space-x-2 text-blue-600 hover:text-blue-800 mb-8 transition-colors duration-300"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -36,7 +70,7 @@ export default async function ProductPage({ params }) {
           />
         </svg>
         <span className="font-semibold">Go Back</span>
-      </Link>
+      </button>
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="md:flex">

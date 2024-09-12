@@ -4,10 +4,25 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 
-// ProductCard Component
+/**
+ * ProductCard Component displays a single product with an image carousel, title, price, and a link to product details.
+ *
+ * @param {Object} props - The properties object.
+ * @param {Object} props.product - The product object containing details to be displayed.
+ * @param {string} props.product.id - The unique identifier of the product.
+ * @param {string[]} props.product.images - An array of image URLs for the product.
+ * @param {string} props.product.thumbnail - The URL of the product's thumbnail image.
+ * @param {string} props.product.title - The title of the product.
+ * @param {number} props.product.price - The price of the product.
+ * @returns {JSX.Element} - A component that displays the product card with image carousel and details.
+ */
 const ProductCard = ({ product }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  /**
+   * Moves to the next image in the carousel.
+   * @param {React.MouseEvent} e - The click event.
+   */
   const nextImage = (e) => {
     e.preventDefault();
     setCurrentImageIndex((prevIndex) => 
@@ -15,6 +30,10 @@ const ProductCard = ({ product }) => {
     );
   };
 
+  /**
+   * Moves to the previous image in the carousel.
+   * @param {React.MouseEvent} e - The click event.
+   */
   const prevImage = (e) => {
     e.preventDefault();
     setCurrentImageIndex((prevIndex) => 
@@ -38,12 +57,14 @@ const ProductCard = ({ product }) => {
               <button 
                 onClick={prevImage} 
                 className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full w-8 h-8 flex items-center justify-center text-xl"
+                aria-label="Previous image"
               >
                 &#8249;
               </button>
               <button 
                 onClick={nextImage} 
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full w-8 h-8 flex items-center justify-center text-xl"
+                aria-label="Next image"
               >
                 &#8250;
               </button>
@@ -64,7 +85,18 @@ const ProductCard = ({ product }) => {
   );
 };
 
-// ProductGrid Component
+/**
+ * ProductGrid Component renders a grid of ProductCard components.
+ *
+ * @param {Object} props - The properties object.
+ * @param {Object[]} props.products - An array of product objects to be displayed.
+ * @param {string} props.products.id - The unique identifier of each product.
+ * @param {string[]} props.products.images - An array of image URLs for each product.
+ * @param {string} props.products.thumbnail - The URL of each product's thumbnail image.
+ * @param {string} props.products.title - The title of each product.
+ * @param {number} props.products.price - The price of each product.
+ * @returns {JSX.Element} - A component that displays a grid of product cards.
+ */
 export default function ProductGrid({ products }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
