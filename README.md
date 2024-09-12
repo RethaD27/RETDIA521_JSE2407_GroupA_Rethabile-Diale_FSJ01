@@ -52,9 +52,6 @@ cd quickcart-emporium
 
 ```bash
 npm install
-# or
-yarn install
-```
 
 ### Configure Environment Variables
 
