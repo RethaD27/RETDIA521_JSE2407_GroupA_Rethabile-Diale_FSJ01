@@ -29,7 +29,6 @@ QuickCart Emporium is built using a modern stack of technologies:
 - **Next.js**: A React framework for building server-rendered React applications with ease.
 - **Tailwind CSS**: A utility-first CSS framework for styling the application with custom design.
 - **React**: A JavaScript library for building user interfaces.
-- **Vercel**: Platform for deploying and hosting Next.js applications.
 - **API**: Custom API for fetching products and handling product details.
 
 ## Setup Instructions
